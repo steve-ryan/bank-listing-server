@@ -1,0 +1,22 @@
+{
+  "name": "bank-listing-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steve-ryan/bank-listing-server.git"
+  },
+  "author": "Stephen Wachira <stevohyoung@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/steve-ryan/bank-listing-server/issues"
+  },
+  "homepage": "https://github.com/steve-ryan/bank-listing-server#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
