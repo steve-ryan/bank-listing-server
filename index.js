@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const name = "steve";
 
 app.get("/",function(req, res){
     //logic
