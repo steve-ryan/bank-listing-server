@@ -30,7 +30,7 @@ app.get("/api/category/local", (req, res) => {
 });
 
 app.get("/api/category/international", (req, res) => {
-    pool.query("SELECT Logo_url,Bank_name,Count(DISTINCT Bank_id) as number_of_branches FROM Bank  WHERE category='international'", (error, rows) => {
+    pool.query("SELECT Logo_url,Bank_name,Count(Bank_id) as number_in_this_category FROM Bank  WHERE category='international'", (error, rows) => {
         if (error) {
             return res.status(500).json({ error });
         }
@@ -46,6 +46,15 @@ app.get("/api/branch", (req, res) => {
         }
         res.json(rows);
     });
+});
+
+app.get("/api/equity/branches",(req,res)=>{
+pool.query("SELECT b.Bank_name, b.Logo_url, Location, Branch_name, Phone_Number, Email,Operation_hrs FROM Branch as br JOIN Bank as b ON  b.Bank_id=br.Bank_id AND b.Bank_id='1';",(error,rows)=>{
+    if(error){
+        return res.status(500).json({error});
+    }
+    res.json(rows);
+});
 });
 
 app.listen(9000, function () {
