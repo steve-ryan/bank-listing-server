@@ -61,14 +61,18 @@ app.get("/api/equity/branches", (req, res) => {
 });
 //adding a bank
 app.post("/api/bank", (req, res) => {
-    const Bank = req.body;
-    
-    if (Bank.Bank_name === "") {
+    const{
+        Bank_name,
+        Logo_url,
+        Category
+    }= req.body;
+
+    if (Bank_name === "" ||Logo_url ==="" ||Category==="") {
         return res.status(400).json({ error: "Invalid payload" });
     }
     pool.query(
-        "INSERT INTO Bank (Bank_name) VALUES (?)",
-        [Bank.Bank_name],
+        "INSERT INTO Bank (Bank_name,Logo_url,Category) VALUES (?,?,?)",
+        [Bank_name,Logo_url,Category],
         (error, results) => {
             if (error) {
                 return res.status(500).json({ error });
