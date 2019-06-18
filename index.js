@@ -10,6 +10,9 @@ const pool = mysql.createPool({
     database: process.env.DB_NAME
 });
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 app.get("/api/bank", (req, res) => {
     //fetch bank
     pool.query("SELECT * FROM Bank", (error, rows) => {
@@ -48,14 +51,34 @@ app.get("/api/branch", (req, res) => {
     });
 });
 
-app.get("/api/equity/branches",(req,res)=>{
-pool.query("SELECT b.Bank_name, b.Logo_url, Location, Branch_name, Phone_Number, Email,Operation_hrs FROM Branch as br JOIN Bank as b ON  b.Bank_id=br.Bank_id AND b.Bank_id='1';",(error,rows)=>{
-    if(error){
-        return res.status(500).json({error});
+app.get("/api/equity/branches", (req, res) => {
+    pool.query("SELECT b.Bank_name, b.Logo_url, Location, Branch_name, Phone_Number, Email,Operation_hrs FROM Branch as br JOIN Bank as b ON  b.Bank_id=br.Bank_id AND b.Bank_id='1';", (error, rows) => {
+        if (error) {
+            return res.status(500).json({ error });
+        }
+        res.json(rows);
+    });
+});
+//adding a bank
+app.post("/api/bank", (req, res) => {
+    const Bank = req.body;
+    
+    if (Bank.Bank_name === "") {
+        return res.status(400).json({ error: "Invalid payload" });
     }
-    res.json(rows);
+    pool.query(
+        "INSERT INTO Bank (Bank_name) VALUES (?)",
+        [Bank.Bank_name],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.json(results.insertId);
+        }
+    )
+
 });
-});
+
 
 app.listen(9000, function () {
     console.log("App listening on port 9000");
