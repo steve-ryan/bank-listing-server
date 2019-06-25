@@ -88,28 +88,7 @@ app.post("/api/bank", (req, res) => {
     );
 });
 
-/*app.put("/api/bank/:id", (req, res) => {
-    const { Bank_name} = req.body;
-    if (!Bank_name) {
-        return res.status(400).json({ error: "Invalid payload" });
-    }
 
-    pool.query(
-        "UPDATE Bank SET Bank_name =? WHERE id = ?",
-        [Bank_name, req.params.id],
-        (error, results) => {
-            if (error) {
-                return res.json(500).json({ error });
-            }
-            res.json(results.changedRows);
-        }
-    );
-});
-app.delete("/api/bank", (req, res) => {
-    pool.query(
-        ""
-    );
-});*/
 
 app.listen(9000, () => {
     console.log("App listening on port 9000");
