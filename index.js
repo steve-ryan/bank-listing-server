@@ -88,6 +88,20 @@ app.post("/api/bank", (req, res) => {
     );
 });
 
+//deleting a bank
+app.delete("/api/bank/:id", (req, res) => {
+    pool.query(
+        "DELETE FROM Bank WHERE Bank_id = ?",
+        [req.params.id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.json(results.affectedRows);
+        }
+    );
+});
+
 
 
 app.listen(9000, () => {
