@@ -88,21 +88,21 @@ app.post("/api/bank", (req, res) => {
     );
 });
 //update a bank
-app.put("/api/bank/:id",(req,res)=>{
-const{Bank_name,Logo_url}= req.body;
-if(!Bank_name || !Logo_url){
-    return res.status(400).json({ error: "Invalid payload" }); 
-}
-pool.query(
-    "UPDATE Bank SET Bank_name = ?, Logo_url = ? WHERE Bank_id = ?",
-    [Bank_name,Logo_url,req.params.id],
-    (error,results)=>{
-        if (error){
-        return res.status(500).json({error});
+app.put("/api/bank/:id", (req, res) => {
+    const { Bank_name, Logo_url } = req.body;
+    if (!Bank_name || !Logo_url) {
+        return res.status(400).json({ error: "Invalid payload" });
     }
-res.json(results.ChangedRows);
-    }
-);
+    pool.query(
+        "UPDATE Bank SET Bank_name = ?, Logo_url = ? WHERE Bank_id = ?",
+        [Bank_name, Logo_url, req.params.id],
+        (error, results) => {
+            if (error) {
+                return res.status(500).json({ error });
+            }
+            res.json(results.ChangedRows);
+        }
+    );
 });
 
 
