@@ -1,33 +1,59 @@
-.App {
-  text-align: center;
+.Bkapp-container {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  position: fixed;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Bkapp-navbar {
+  overflow: hidden;
+  background-color: palevioletred;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: wrap;
+  /*min-height: 48px;*/
 }
 
-.App-link {
-  color: #61dafb;
+.Bkapp-navbar a {
+  font-size: 16px;
+  color: blue;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Bkapp-dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.Bkapp-dropdown .Bkapp-dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: blue;
+  padding: 14px 16px;
+  background-color: inherit;
+  margin: 0;
+}
+
+.dropdown-category {
+  display: none;
+  position: absolute;
+  background-color: palevioletred;
+  min-width: 120px;
+  z-index: 1;
+}
+
+.dropdown-category a {
+  float: none;
+  color: whitesmoke;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.Bkapp-dropdown:hover .dropdown-category {
+  display: block;
 }
