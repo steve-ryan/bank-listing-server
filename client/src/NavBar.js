@@ -1,23 +1,27 @@
 import React from "react";
+import { Link } from "@reach/router";
 
-function Navbar() {
+function Navbar(props) {
+    // const { uri } = props;
     return (
         <div className="Bkapp-container">
             <div className="Bkapp-navbar">
-            <a href="//home">Home</a>
+            <a href="/">Home</a>
             <div className="Bkapp-dropdown">
                 <button className="Bkapp-dropbtn">
                     Category->
                 </button>
                 <div className="dropdown-category">
-                    <a href="//local">Local</a>
-                    <a href="//international">International</a>
+                    <Link to="/local">Local</Link>
+                    <Link to="/international">International</Link>
                 </div>
             </div>
-            <a href="//branch">Branch</a>
-            <a href="//Admin">Admin</a>
+            <Link to="/Branch">Branch</Link>
+            <Link to="/Admin">Admin</Link>
         </div>
+        <h2>Hey..</h2>
         </div>
+        
     );
 }
 export default Navbar;
