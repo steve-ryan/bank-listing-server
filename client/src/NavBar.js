@@ -19,7 +19,6 @@ function Navbar(props) {
             <Link to="/Branch">Branch</Link>
             <Link to="/Admin">Admin</Link>
         </div>
-        <h2>Hey..</h2>
         </div>
         
     );

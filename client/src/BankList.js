@@ -1,0 +1,64 @@
+import React from "react";
+import axios from "axios";
+import Bank from "./Bank";
+import Loading from "./Loading";
+import Error from "./Error";
+
+class BankList extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            bankDisplay: [],
+            loading: false,
+            error: false
+        };
+    }
+
+    componentDidMount() {
+        this.fetchbankDisplay();
+    }
+    fetchbankDisplay() {
+        this.setState({
+            loading: true,
+            error: false
+        });
+        axios
+            .get("/api/bank")
+            .then(response => {
+                this.setState({
+                    bankDisplay: response.data,
+                    loading: false,
+                    error: true
+                });
+            })
+            .catch(error => {
+                this.setState({
+                    bankDisplay: [],
+                    loading: false,
+                    error: true
+                });
+            });
+    }
+    render() {
+        const { bankDisplay, loading, error } = this.state;
+
+        if (loading) {
+            return <Loading />;
+        }
+        if (error) {
+            return <Error />;
+        }
+
+        return (
+            <div className="Bankl-container">
+                <div>
+                    {bankDisplay.map(b => (
+                        <Bank key={b.id} bankDisplay={b} />
+                    ))}
+                </div>
+            </div>
+        );
+    }
+}
+
+export default BankList;

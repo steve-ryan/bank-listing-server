@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Router } from "@reach/router";
+import NavBar from "./NavBar";
 import './App.css';
+import BankList from './BankList';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React Now
-        </a>
+    <div className="bank-app">
+      <header className="bank-header">
+        <Router>
+          <NavBar default />
+        </Router>
       </header>
+      <main className="bank-main">
+        <Router>
+<BankList path="/" />
+        </Router>
+      </main>
     </div>
   );
 }
 
 export default App;
+
