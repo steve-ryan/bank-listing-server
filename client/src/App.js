@@ -1,8 +1,9 @@
 import React from 'react';
 import { Router } from "@reach/router";
 import NavBar from "./NavBar";
-import './App.css';
 import BankList from './BankList';
+import './App.css';
+
 
 
 function App() {

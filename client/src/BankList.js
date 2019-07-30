@@ -10,13 +10,14 @@ class BankList extends React.Component {
         this.state = {
             bankDisplay: [],
             loading: false,
-            error: false
+            error: true
         };
     }
 
     componentDidMount() {
         this.fetchbankDisplay();
     }
+
     fetchbankDisplay() {
         this.setState({
             loading: true,
@@ -28,7 +29,7 @@ class BankList extends React.Component {
                 this.setState({
                     bankDisplay: response.data,
                     loading: false,
-                    error: true
+                    error: false
                 });
             })
             .catch(error => {
@@ -39,21 +40,23 @@ class BankList extends React.Component {
                 });
             });
     }
+
     render() {
         const { bankDisplay, loading, error } = this.state;
 
         if (loading) {
             return <Loading />;
         }
+
         if (error) {
             return <Error />;
         }
 
         return (
-            <div className="Bankl-container">
+            <div className="Bank-container">
                 <div>
                     {bankDisplay.map(b => (
-                        <Bank key={b.id} bankDisplay={b} />
+                        <Bank key={b.Bank_id} bankDisplay={b} />
                     ))}
                 </div>
             </div>
