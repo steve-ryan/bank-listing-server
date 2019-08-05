@@ -1,10 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Router } from "@reach/router";
 import NavBar from "./NavBar";
-import BankList from './BankList';
-import './App.css';
-
-
+import BankList from "./BankList";
+import BranchList from "./BranchList";
+import Local from "./Local";
+import International from "./International";
+// import BankForm from "./BankForm";
+import "./App.css";
 
 function App() {
   return (
@@ -16,7 +18,10 @@ function App() {
       </header>
       <main className="bank-main">
         <Router>
-<BankList path="/" />
+          <BankList path="/" />
+          <Local path="/local" />
+          <International path="/international" />
+          <BranchList path="/branch" />
         </Router>
       </main>
     </div>
@@ -24,4 +29,3 @@ function App() {
 }
 
 export default App;
-

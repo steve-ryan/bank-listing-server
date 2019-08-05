@@ -1,9 +1,9 @@
-.Bkapp-container {
+/* .Bkapp-container {
   position: relative;
   width: 100%;
   margin: 0;
   position: fixed;
-}
+} */
 
 .Bkapp-navbar {
   overflow: hidden;
@@ -57,4 +57,24 @@
 .Bkapp-dropdown:hover .dropdown-category {
   display: block;
 }
+/* .Bank-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  width: 200px;  
+} */
+.banklogo {
+  height: 170px;
+  width: 100px;
+}
+.branchBtn {
+  text-decoration: none;
+}
+.bank-main{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  width: 200px;   
+}
+
 
